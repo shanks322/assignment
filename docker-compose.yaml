@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  react:
+    build: ./react
+    depends_on:
+      - flask
+    ports:
+      - "3000:3000"
+    networks:
+      - app_net
+
+  flask:
+    build: ./
+    ports:
+      - "5000:5000"
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
